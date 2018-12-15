@@ -28,7 +28,10 @@ class Facebook:
 			try:
 				self.driver.find_element_by_id('u_0_3').click()
 			except:
-				self.driver.find_element_by_id('u_0_w').click()	
+				self.driver.find_element_by_id('u_0_w').click()
+		self.driver.execute_script("window.alert = function() {};")
+
+	
 
 	
 	
@@ -38,6 +41,7 @@ class Facebook:
 
 		#opens the url of the given id
 		self.driver.get('https://www.facebook.com/'+ids+'/friends')
+		self.driver.execute_script("window.alert = function() {};")
 
 		#height for scrolling through
 		last_height = self.driver.execute_script("return document.body.scrollHeight")
@@ -103,6 +107,7 @@ class Facebook:
 		#function for sending friend list here id is the username of the person to send friend request
 		self.driver.get('https://www.facebook.com/'+ids)
 		time.sleep(5)
+		self.driver.execute_script("window.alert = function() {};")
 		try:
 			data = self.driver.find_element_by_css_selector('button.FriendRequestAdd.addButton')
 			data.click()
@@ -115,6 +120,7 @@ class Facebook:
 	def send_message(self,username,message,spam=False):
 		#function send message 
 		p = 'https://www.facebook.com/messages/t/'+username
+		self.driver.execute_script("window.alert = function() {};")
 		self.driver.get(p)
 
 		#loop for spamming
@@ -142,6 +148,7 @@ class Facebook:
 		if username is not None:
 			self.driver.get("https://www.facebook.com/"+username)
 			time.sleep(3)
+			self.driver.execute_script("window.alert = function() {};")
 			class_name = "UFILikeLink"
 		else:
 			class_name = "_6a-y"
